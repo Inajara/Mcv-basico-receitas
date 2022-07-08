@@ -1,0 +1,39 @@
+@model DesafioMVC.DTO.ReceitaDTO;
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <h2>Nova receita</h2>
+    <br>
+    <form class="form-horizontal" asp-controller="Receita" asp-action="Salvar" method="POST">
+        <input type="hidden" asp-for="Id" value="0">
+        <label asp-for="Nome">Nome</label>
+        <br>
+        <input type="text" asp-for="Nome" class="form-control">
+        <span asp-validation-for="Nome"></span>
+        <br><br>
+        <label asp-for="MedidaID">Medida</label>
+        <br>
+        <select class="form-control form-select" asp-for="MedidaID" asp-items='@(new SelectList(@ViewBag.Medidas, "Id", "Nome"))'></select>
+        <span asp-validation-for="MedidaID"></span>
+        <br><br>
+        <label asp-for="MedidaID">Ingrediente</label>
+        <br>
+        <select class="form-control form-select" asp-for="IngredienteID" asp-items='@(new SelectList(@ViewBag.Ingredientes, "Id", "Nome"))'></select>
+        <span asp-validation-for="IngredienteID"></span>
+        <br><br>
+        <label asp-for="MedidaID">Categoria</label>
+        <br>
+        <select class="form-control form-select" asp-for="CategoriaID" asp-items='@(new SelectList(@ViewBag.Categorias, "Id", "Nome"))'></select>
+        <span asp-validation-for="MedidaID"></span>
+        <br><br>
+        <label asp-for="Instrucao">Modo de preparo</label>
+        <br>
+        <textarea type="textarea" asp-for="Instrucao" class="form-control"></textarea>
+        <span asp-validation-for="Instrucao"></span>
+        <br>
+        <button class="btn btn-success">Cadastrar</button>
+    </form>
+</div>

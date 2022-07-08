@@ -1,0 +1,55 @@
+@model IEnumerable<DesafioMVC.Models.Receita>
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container" style="margin: 10px;">
+    <button type="button" class="btn btn-primary btn-lg"><a asp-action="NovaReceita" asp-controller="Admin">Cadastrar nova receita</a></button>
+</div>
+
+<script>
+    $(document).ready( function () {
+    $('#receitas').DataTable();
+    } );
+</script>
+
+<table id="receitas" class="table table-hover table-active">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Ingredientes</th>
+            <th scope="col">Medidas</th>
+            <th scope="col">Categorias</th>
+            <th scope="col">Instrução</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var receita in Model)
+        {
+            <tr>
+                <td>@receita.Id</td>
+                <td>@receita.Nome</td>
+                <td>@receita.Ingrediente.Nome</td>
+                <td>@receita.Medida.Nome</td>
+                <td>@receita.Categoria.Nome</td>
+                <td>@receita.Instrucao</td>
+                <td><button class="btn btn-primary">
+                        <a asp-route-Id="@receita.Id" asp-action="EditarReceita" asp-controller="Admin">Editar</a>
+                    </button>
+                    <form  style="display: inline;">
+                        <input type="hidden" name="id" id="id" value="@receita.Id">
+                        <button class="btn btn-secondary">
+                            <a>Ocultar</a>
+                        </button>
+                    </form>
+                    <button class="btn btn-danger">
+                        <a asp-route-Id="@receita.Id" asp-action="DeletarReceita" asp-controller="Admin">Deletar</a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

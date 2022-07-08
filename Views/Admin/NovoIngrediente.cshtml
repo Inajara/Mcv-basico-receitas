@@ -1,0 +1,24 @@
+@model DesafioMVC.DTO.IngredienteDTO;
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <h2>Novo ingrediente</h2>
+    <br>
+    <form class="form-horizontal" asp-controller="Ingrediente" asp-action="Salvar" method="POST">
+        <input type="hidden" asp-for="Id" value="0">
+        <label asp-for="Nome">Nome</label>
+        <br>
+        <input type="text" asp-for="Nome" class="form-control">
+        <span asp-validation-for="Nome"></span>
+        <br><br>
+        <label asp-for="MedidaID">Medida</label>
+        <br>
+        <select class="form-control" asp-for="MedidaID" asp-items='@(new SelectList(@ViewBag.Medidas, "Id", "Nome"))'></select>
+        <span asp-validation-for="MedidaID"></span>
+        <br>
+        <button class="btn btn-success">Cadastrar</button>
+    </form>
+</div>

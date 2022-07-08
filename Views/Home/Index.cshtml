@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container" style="margin: 10px;">
+    <div class="text-center">
+    <h1 class="display-4">Livro de Receitas</h1>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center min" style="height: 50vh">
+            <div class="card border-dark mb-3" style="max-width: 20rem; margin-right: 0.5rem;">
+                <div class="card-header">Configurações</div>
+                <div class="card-body">
+                    <h4 class="card-title">Faça o login para editar receitas</h4>
+                    <div class="card">
+                        <button class="btn btn-primary">
+                            <a asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-light mb-3" style="max-width: 20rem; margin-left: 0.5rem;">
+                <div class="card-header">Receitas</div>
+                <div class="card-body">
+                    <h4 class="card-title">Acesse nossas deliciosas receitas</h4>
+                    <div class="card">
+                        <button class="btn btn-primary">
+                            <a asp-action="Pagina" asp-controller="Home">Visualizar</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

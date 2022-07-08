@@ -1,0 +1,47 @@
+@model IEnumerable<DesafioMVC.Models.Categoria>
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container" style="margin: 10px;">
+    <button type="button" class="btn btn-primary btn-lg"><a asp-action="NovaCategoria" asp-controller="Admin">Cadastrar nova categoria</a></button>
+</div>
+
+<script>
+    $(document).ready( function () {
+    $('#categorias').DataTable();
+    } );
+</script>
+
+<table class="table table-hover table-active" id="categorias">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoria in Model)
+        {
+            <tr>
+                <td>@categoria.Id</td>
+                <td>@categoria.Nome</td>
+                <td><button class="btn btn-primary">
+                        <a asp-route-Id="@categoria.Id" asp-action="EditarCategoria" asp-controller="Admin">Editar</a>
+                    </button>
+                    <form asp-route-Id="@categoria.Id" asp-action="Ocultar" asp-controller="Categoria" style="display: inline;">
+                        <input type="hidden" name="id" id="id" value="@categoria.Id">
+                        <button class="btn btn-secondary">
+                            <a>Ocultar</a>
+                        </button>
+                    </form>
+                    <button class="btn btn-danger">
+                        <a asp-route-Id="@categoria.Id" asp-action="DeletarCategoria" asp-controller="Admin">Deletar</a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DesafioMVC.Models.Receita>
+
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container" style="margin:10px;">
+    <div class="wrapper"  style="margin:10px;">
+        <button type="button" class="medidas btn btn-primary"><a asp-action="Categorias" asp-controller="Admin">Categorias</a></button>
+        <button type="button" class="medidas btn btn-primary"><a asp-action="Medidas" asp-controller="Admin">Medidas</a></button>
+        <button type="button" class="ingredientes btn btn-primary"><a asp-action="Ingredientes" asp-controller="Admin">Ingredientes</a></button>
+        <button type="button" class="receitas btn btn-primary"><a asp-action="Receitas" asp-controller="Admin">Receitas</a></button>
+    </div>
+
+    <script>
+        $(document).ready( function () {
+            $('#geral').DataTable();
+        } );
+    </script>
+
+    <div class="tables"  style="margin:10px;">
+        <table class="table table-hover" id="geral">
+        <thead>
+            <tr>
+            <th scope="col">Medidas</th>
+            <th scope="col">Ingredientes</th>
+            <th scope="col">Receitas</th>
+            <th scope="col">Categorias</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var receita in Model)
+            {
+                <tr class="table-dark">
+                    <td>@receita.Medida.Nome</td>
+                    <td>@receita.Ingrediente.Nome</td>
+                    <td>@receita.Nome</td>
+                    <td>@receita.Categoria.Nome</td>
+                </tr>
+            }
+        </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+@model IEnumerable<DesafioMVC.Models.Medida>
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container" style="margin: 10px;">
+    <button type="button" class="btn btn-primary btn-lg"><a asp-action="NovaMedida" asp-controller="Admin">Cadastrar nova medida</a></button>
+</div>
+
+<script>
+    $(document).ready( function () {
+    $('#medidas').DataTable();
+    } );
+</script>
+
+<table class="table table-hover table-active" id="medidas">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medida in Model)
+        {
+            <tr>
+                <td>@medida.Id</td>
+                <td>@medida.Nome</td>
+                <td><button class="btn btn-primary">
+                        <a asp-route-Id="@medida.Id" asp-action="EditarMedida" asp-controller="Admin">Editar</a>
+                    </button>
+                    <form asp-route-Id="@medida.Id" asp-action="Ocultar" asp-controller="Medida" style="display: inline;">
+                        <input type="hidden" name="id" id="id" value="@medida.Id">
+                        <button class="btn btn-secondary">
+                            <a>Ocultar</a>
+                        </button>
+                    </form>
+                    <button class="btn btn-danger">
+                        <a asp-route-Id="@medida.Id" asp-action="DeletarMedida" asp-controller="Admin">Deletar</a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

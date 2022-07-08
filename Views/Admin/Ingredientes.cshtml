@@ -1,0 +1,49 @@
+@model IEnumerable<DesafioMVC.Models.Ingrediente>
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container" style="margin: 10px;">
+    <button type="button" class="btn btn-primary btn-lg"><a asp-action="NovoIngrediente" asp-controller="Admin">Cadastrar novo ingrediente</a></button>
+</div>
+
+<script>
+    $(document).ready( function () {
+    $('#ingredientes').DataTable();
+    } );
+</script>
+
+<table id="ingredientes" class="table table-hover table-active">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Medida</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ingrediente in Model)
+        {
+            <tr>
+                <td>@ingrediente.Id</td>
+                <td>@ingrediente.Nome</td>
+                <td>@ingrediente.Medida.Nome</td>
+                <td><button class="btn btn-primary">
+                        <a asp-route-Id="@ingrediente.Id" asp-action="EditarIngrediente" asp-controller="Admin">Editar</a>
+                    </button>
+                    <form asp-route-Id="@ingrediente.Id" asp-action="Ocultar" asp-controller="Ingrediente" style="display: inline;">
+                        <input type="hidden" name="id" id="id" value="@ingrediente.Id">
+                        <button class="btn btn-secondary">
+                            <a>Ocultar</a>
+                        </button>
+                    </form>
+                    <button class="btn btn-danger">
+                        <a asp-route-Id="@ingrediente.Id" asp-action="DeletarIngrediente" asp-controller="Admin">Deletar</a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

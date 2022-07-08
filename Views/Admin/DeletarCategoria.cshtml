@@ -1,0 +1,18 @@
+@model DesafioMVC.DTO.CategoriaDTO;
+
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container">
+    <h2>Deletar categoria</h2>
+    <br>
+    <form class="form-horizontal" asp-controller="Categoria" asp-action="Deletar" method="POST">
+        <input type="hidden" asp-for="Id">
+        <label asp-for="Nome">Nome</label>
+        <br>
+        <input type="text" asp-for="Nome" class="form-control">
+        <span asp-validation-for="Nome"></span>
+        <br>
+        <button class="btn btn-danger">Deletar</button>
+    </form>
+</div>

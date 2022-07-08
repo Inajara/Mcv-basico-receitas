@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - DesafioMVC</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https:///cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" asp-controller="Admin" asp-action="Index">Painel Administrativo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" asp-controller="Home" asp-action="Index">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" asp-action="Categorias" asp-controller="Admin">Categorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" asp-action="Medidas" asp-controller="Admin">Medidas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" asp-action="Ingredientes" asp-controller="Admin">Ingredientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" asp-action="Receitas" asp-controller="Admin">Receitas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    </header>
+    @RenderBody()
+    <footer></footer>
+</body>
+<script src="~/js/admin.js"></script>
+</html>

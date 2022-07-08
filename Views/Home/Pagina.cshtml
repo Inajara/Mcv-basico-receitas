@@ -1,0 +1,80 @@
+@model IEnumerable<DesafioMVC.Models.Receita>
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container" style="margin: 10px;">
+    <div class="text-center">
+        <h1 class="display-4">Nossas Receitas</h1>
+        <p class="lead">Receitas para todos os gostos</p>
+    </div>
+
+    <div class="card-content" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+        @foreach (var receita in Model)
+            {
+                <div class="d-flex align-items-center justify-content-center min" style="height: 50vh">
+                    <div class="card border-light mb-3" style="max-width: 20rem; margin: 0.5rem;">
+                        <div class="card-header">@receita.Nome</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Acesse para ver instruções</h4>
+                            <div class="card">
+                                <button class="btn btn-primary">
+                                    <a asp-area="Identity" asp-page="/Home/Pagina">Visualizar</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+    </div>
+
+    <script>
+        $(document).ready( function () {
+            $('#pagina').DataTable();
+        } );
+    </script>
+
+    <div  class="tables"  style="margin:10px;">
+        <table class="table table-hover" id="pagina">
+            <thead>
+                <tr>
+                <th scope="col">Receita</th>
+                <th scope="col">Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var receita in Model)
+            {
+                <tr class="table-light">
+                    <td>@receita.Nome</td>
+                    <td>@receita.Categoria.Nome</td>
+                    <td><button class="btn btn-primary" data-toggle="modal" data-target="modal">
+                            Visualizar
+                        </button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

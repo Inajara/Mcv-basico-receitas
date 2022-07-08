@@ -1,0 +1,18 @@
+@model DesafioMVC.DTO.MedidaDTO;
+
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container">
+    <h2>Editar medida</h2>
+    <br>
+    <form class="form-horizontal" asp-controller="Medida" asp-action="Atualizar" method="POST">
+        <input type="hidden" asp-for="Id">
+        <label asp-for="Nome">Nome</label>
+        <br>
+        <input type="text" asp-for="Nome" class="form-control">
+        <span asp-validation-for="Nome"></span>
+        <br>
+        <button class="btn btn-primary">Atualizar</button>
+    </form>
+</div>
